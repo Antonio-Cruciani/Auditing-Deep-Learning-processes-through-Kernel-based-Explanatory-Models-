@@ -70,7 +70,7 @@ and copy the content of Datasets in
 		5.1 - Start Nystrom Module
 		5.2 - Start Flask
 
-#0 - General infos
+# 0 - General infos
 	
 The folder 'KDA_readability_projec' contains all codes and data to perform classification (via Kernel-based Deep Architecture, KDA) and prediction explanation (applying Layerwise Relevance Propagation, LRP) on one task: Question Classificiation.
 
