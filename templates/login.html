@@ -1,0 +1,68 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+     <title>Auditing Deep Learning processes through Kernel-based Explanatory Models</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='bootstrap.min.css') }}">
+
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static',filename='cover.css') }}" rel="stylesheet">
+  </head>
+  {% block body %}
+  {% if session['logged_in'] %}
+  You're logged in already!
+
+  {% else %}
+  <body class="text-center">
+   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h1>Auditing Deep Learning processes through Kernel-based Explanatory Models</h1>
+         
+        </div>
+      </header>
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+      <main role="main" class="inner cover">
+        <img src="../static/images/img-torv.png">
+
+     
+        <h4> Please insert Username and Password </h4>
+        <form action="/login" method="POST">
+
+          <input type="text" id="login" class="form-control" name="username" placeholder="username">
+          <input type="password" id="password" class="form-control" name="password" placeholder="password">
+         
+          <input type="submit" class="button btn btn-lg btn-block" value="Log in">
+       </form>
+       
+      
+    
+        
+      
+      </main>
+
+      </header>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Made by Antonio Cruciani.</p>
+        </div>
+      </footer>
+    </div>
+    </div>
+
+{% endif %}
+{% endblock %}
+

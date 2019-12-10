@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Auditing Deep Learning processes through Kernel-based Explanatory Models</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='bootstrap.min.css') }}">
+
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static',filename='cover.css') }}" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+   
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h1>Auditing Deep Learning processes through Kernel-based Explanatory Models</h1>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/">Home</a>
+            <a class="nav-link" href="#">About Us</a>
+            <a class="nav-link" href="http://localhost:5000/logout">Logout</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        <img src="../static/images/img-torv.png">
+
+        <p class="lead"><div class="md-form" >
+        <form action = "http://localhost:5000/result" method = "POST" >
+      {% if Script %}
+         {% for key, value in result.items() %}
+           {% if key == "Question" %}
+            
+               {{ value }} 
+         
+           {% endif %}
+           {% endfor %}
+
+      {% else %}
+            <input placeholder="Write here your question (e.g. Who is Kennedy?)" type="text" id="question" name="squestion" class="form-control" required>
+      {% endif %}
+  		&nbsp
+  		
+		<button type="submit" class="button btn btn-lg btn-block">Classify and Explain</button>
+  		</form>
+		</div></p>
+    
+    {% if Script %}
+      
+      <table class="table table-borderless">
+         {% for key, value in result.items() %}
+           
+           {% if key == "PositiveSingleton" %}
+            <thead >
+
+            <tr class="table-secondary">
+                
+               <th class="text-left">Positive Singleton Explanation </th>
+               
+           </tr>
+         </thead>
+         <tbody>
+            <tr class="table-light">
+            
+               <td> {{ value }} </td>
+            </tr>
+          </tbody>
+          {% endif %}
+           {% if key == "NegativeSingleton" %}
+            <thead>
+            <tr class="table-secondary">
+                <th class="text-left">Negative Singleton Explanation </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-light">
+               <td> {{ value }} </td>
+            </tr>
+          </tbody>
+          {% endif %}
+          {% if key == "PositiveContrastive" %}
+           <thead>
+            <tr class="table-secondary">
+               <th class="text-left">Positive Contrastive Explanation </th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr class="table-light">
+               <td> {{ value }} </td>
+            </tr>
+          </tbody>
+          {% endif %}
+          {% if key == "NegativeContrastive" %}
+           <thead>
+            <tr class="table-secondary">
+              <th class="text-left">Negative Contrastive Explanation </th>
+
+            </tr>
+          </thead>
+          <tbody >
+            <tr class="table-light">
+               <td> {{ value }} </td>
+            </tr>
+          </tbody>
+          {% endif %}
+          {% if key == "PositiveConjunctive" %}
+           <thead>
+            <tr class="table-secondary">
+               <th class="text-left">Positive Conjunctive Explanation </th>
+
+            </tr>
+             </thead>
+          <tbody >
+              <tr class="table-light">
+               <td> {{ value }} </td>
+            </tr>
+            </tbody>
+          {% endif %}
+          {% if key == "NegativeConjunctive" %}
+          <thead>
+            <tr class="table-secondary">
+                <th class="text-left">Negative Conjunctive Explanation </th>
+            </tr>
+            </thead>
+            <tbody >
+              <tr class="table-light">
+               <td > {{ value }} </td>
+            </tr>
+            </tbody>
+          {% endif %}
+
+         {% endfor %}
+
+      </table>
+      
+    {% endif %}
+      </main>
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Made by Antonio Cruciani.</p>
+        </div>
+      </footer>
+    </div>
+    </div>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

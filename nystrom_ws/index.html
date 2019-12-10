@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>I4ALL - Reveal</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/minty/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link rel="icon" href="img/Logo-Uni-Tor-Vergata.png">
+
+<script type="text/javascript">
+
+$(function(){
+	$("#strazz").on("submit", function(e){
+		e.preventDefault();
+		var inputJSONdata = $("#jsontextarea").val()
+		$.ajax({
+	          url: 'rest/qc/getcvectorfromjson',
+	          type: 'post',
+	          data: inputJSONdata,
+	          contentType: 'application/json; charset=utf-8',
+	          dataType: 'json',
+	          success: function(response) {
+	           	alert(JSON.stringify(response))   
+	          },
+		  	   error: function(response){
+		  		 alert(JSON.stringify(response))
+      		 }
+		 });
+	});
+});
+</script>
+
+</head>
+
+<body>
+	<div class="jumbotron text-center align-bottom">
+		<h1 class="text-danger">
+			Nystrom - <img src="img/reveal_logo_trasp.png" class="img-rounded"
+				alt="I4ALL Logo" width="120" height="100"> Services
+		</h1>
+	</div>
+	<div class="text-center">
+		<h2 class="text-success">Nystrom Projection Function</h2>
+	</div>
+
+	<br>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<form action="rest/qc/getcvectorfromstring" method="POST">
+					<div class="text-center">
+						<h4>Process Question</h4>
+					</div>
+					<TEXTAREA class="form-control" style="min-width: 100%" NAME="text"
+						COLS=50 ROWS=3>How many member states are in the UN ?</TEXTAREA>
+					<br /> <input type="submit" class="btn btn-success" value="Submit" />
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<form id="strazz" action="rest/qc/getcvectorfromjson"
+					method="POST">
+					<div class="text-center">
+						<h2 class="text-success">Menu Classifier</h2>
+						<br> Paste your menu here (in JSON)
+					</div>
+					<TEXTAREA id="jsontextarea" class="form-control"
+						style="min-width: 100%" NAME="text" COLS=50 ROWS=6>
+						{
+						"question":"How many member states are in the UN ?", 
+						"label":"NUM"
+						}
+						</TEXTAREA>
+					<br /> <input type="submit" class="btn btn-success" value="Submit" />
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+</body>
+</html>
+
+<!-- curl -H "Content-Type: application/json" -X POST -d '{"text":"Mi fai incendio e furto per la mia auto targata BN250VY?"}' http://160.80.24.91:7070//revealim/rest/cl/post -->
