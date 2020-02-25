@@ -1,4 +1,4 @@
-							README.
+## README
 
 This report illustrates the main functionalities implemented in the code.
 For more details and other classes/modules, comments are found in codelines or you can write to:
